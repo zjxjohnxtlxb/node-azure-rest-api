@@ -1,0 +1,54 @@
+{
+  "name": "restful-api",
+  "version": "1.0.0",
+  "description": "",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "clean": "rimraf dist",
+    "prestart": "pnpm run clean && pnpm run build",
+    "start": "func start",
+    "lint": "pnpm eslint --fix",
+    "prelint": "pnpm prettier --write .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:debugger": "vitest --inspect-brk --pool=forks --no-file-parallelism",
+    "schema:build": "node --env-file=.env -r ts-node/esm src/scripts/generate-schemas.ts",
+    "dao:build": "node --env-file=.env -r ts-node/esm src/scripts/generate-daos.ts",
+    "api:build": "node --env-file=.env -r ts-node/esm src/scripts/generate-apis.ts"
+  },
+  "dependencies": {
+    "@azure/functions": "^4.7.2",
+    "@azure/identity": "^4.11.1",
+    "@azure/storage-blob": "^12.28.0",
+    "azure-functions-core-tools": "^4.2.1",
+    "lodash-es": "^4.17.21",
+    "mssql": "^11.0.1",
+    "sharp": "^0.34.3",
+    "uuid": "^11.1.0",
+    "zod": "^4.1.4"
+  },
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.12",
+    "@types/mssql": "^9.1.8",
+    "@types/node": "^20.19.14",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
+    "eslint": "^9.35.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-unicorn": "^60.0.0",
+    "prettier": "^3.6.2",
+    "rimraf": "^5.0.10",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "main": "src/{index.ts,functions/api/**/*}"
+}

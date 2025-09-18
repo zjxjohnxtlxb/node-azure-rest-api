@@ -1,0 +1,7 @@
+onlyBuiltDependencies:
+  - '@prisma/client'
+  - '@prisma/engines'
+  - azure-functions-core-tools
+  - esbuild
+  - prisma
+  - sharp
